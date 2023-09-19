@@ -1,15 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://bw8d3o4susi3"]
+[gd_scene load_steps=3 format=3 uid="uid://bw8d3o4susi3"]
+
+[ext_resource type="Texture2D" uid="uid://dc4sdjfice8ai" path="res://Sprites/Pipe.png" id="1_id4x6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w6ig6"]
-size = Vector2(20, 165)
+size = Vector2(24, 159.5)
 
-[node name="Pipes" type="Area2D"]
+[node name="Pipes" type="Node2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="UpperPipe" type="StaticBody2D" parent="."]
+position = Vector2(2.08165e-12, 38)
+scale = Vector2(1, 1.28)
 
-[node name="PipeTopCollision2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 10.5)
+[node name="PipeTopCollision2D" type="CollisionShape2D" parent="UpperPipe"]
 shape = SubResource("RectangleShape2D_w6ig6")
 disabled = true
 
-[node name="UpperPipe" type="Sprite2D" parent="StaticBody2D"]
+[node name="UpperPipeSprite" type="Sprite2D" parent="UpperPipe"]
+rotation = -3.14159
+texture = ExtResource("1_id4x6")
+
+[node name="BottomPipe" type="StaticBody2D" parent="."]
+scale = Vector2(1, 1.22044)
+
+[node name="PipeTopCollision2D" type="CollisionShape2D" parent="BottomPipe"]
+position = Vector2(2.08165e-12, 283.75)
+shape = SubResource("RectangleShape2D_w6ig6")
+disabled = true
+
+[node name="BottomPipeSprite" type="Sprite2D" parent="BottomPipe"]
+position = Vector2(2.08165e-12, 283)
+texture = ExtResource("1_id4x6")
