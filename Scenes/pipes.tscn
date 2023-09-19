@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bw8d3o4susi3"]
+[gd_scene load_steps=4 format=3 uid="uid://bw8d3o4susi3"]
 
 [ext_resource type="Texture2D" uid="uid://dc4sdjfice8ai" path="res://Sprites/Pipe.png" id="1_id4x6"]
+[ext_resource type="Script" path="res://Scenes/pipes.gd" id="1_onlqj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w6ig6"]
 size = Vector2(24, 159.5)
 
 [node name="Pipes" type="Node2D"]
+script = ExtResource("1_onlqj")
 
 [node name="UpperPipe" type="StaticBody2D" parent="."]
 position = Vector2(2.08165e-12, 38)
