@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2yxevfii3ip3"]
+
+[ext_resource type="PackedScene" uid="uid://blv5uucj7be36" path="res://bird.tscn" id="1_cc66e"]
+[ext_resource type="PackedScene" uid="uid://bw8d3o4susi3" path="res://pipe.tscn" id="2_qj2bm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ex7u8"]
+size = Vector2(20, 53.9167)
+
+[node name="main" type="Node2D"]
+
+[node name="Bird" parent="." instance=ExtResource("1_cc66e")]
+position = Vector2(224, 309)
+
+[node name="Pipe" parent="." instance=ExtResource("2_qj2bm")]
+position = Vector2(938, -2)
+
+[node name="Pipe2" parent="." instance=ExtResource("2_qj2bm")]
+position = Vector2(922, 607)
+
+[node name="ScoreArea" type="CollisionShape2D" parent="."]
+position = Vector2(-122, 322.5)
+scale = Vector2(12, 12)
+shape = SubResource("RectangleShape2D_ex7u8")

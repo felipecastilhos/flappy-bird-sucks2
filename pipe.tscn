@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw8d3o4susi3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6ig6"]
+
+[node name="Pipe" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_w6ig6")
+disabled = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 0.384314, 1, 1)
