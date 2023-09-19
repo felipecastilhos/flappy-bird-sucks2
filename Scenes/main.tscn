@@ -14,12 +14,6 @@ size = Vector2(1152, 20)
 [node name="Bird" parent="." instance=ExtResource("1_cc66e")]
 position = Vector2(224, 309)
 
-[node name="Pipe" parent="." instance=ExtResource("2_qj2bm")]
-position = Vector2(925, 1)
-
-[node name="Pipe2" parent="." instance=ExtResource("2_qj2bm")]
-position = Vector2(922, 607)
-
 [node name="ScoreArea" type="CollisionShape2D" parent="."]
 position = Vector2(-120, 323)
 scale = Vector2(12, 12)
@@ -36,3 +30,7 @@ debug_color = Color(0.490196, 0.439216, 0.984314, 0.419608)
 position = Vector2(575, 659)
 shape = SubResource("RectangleShape2D_pjg4s")
 debug_color = Color(0.490196, 0.439216, 0.984314, 0.419608)
+
+[node name="Pipes" parent="." instance=ExtResource("2_qj2bm")]
+position = Vector2(1048, -51)
+scale = Vector2(3.41184, 2.44)
