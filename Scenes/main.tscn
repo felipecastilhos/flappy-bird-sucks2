@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d2yxevfii3ip3"]
 
-[ext_resource type="PackedScene" uid="uid://blv5uucj7be36" path="res://bird.tscn" id="1_cc66e"]
-[ext_resource type="PackedScene" uid="uid://bw8d3o4susi3" path="res://pipes.tscn" id="2_qj2bm"]
+[ext_resource type="PackedScene" uid="uid://blv5uucj7be36" path="res://Scenes/bird.tscn" id="1_cc66e"]
+[ext_resource type="PackedScene" uid="uid://bw8d3o4susi3" path="res://Scenes/pipes.tscn" id="2_qj2bm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ex7u8"]
 size = Vector2(20, 53.9167)

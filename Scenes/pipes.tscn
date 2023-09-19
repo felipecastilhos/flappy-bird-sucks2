@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw8d3o4susi3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6ig6"]
+size = Vector2(20, 165)
+
+[node name="Pipes" type="Area2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="PipeTopCollision2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 10.5)
+shape = SubResource("RectangleShape2D_w6ig6")
+disabled = true
+
+[node name="UpperPipe" type="Sprite2D" parent="StaticBody2D"]
