@@ -1,0 +1,83 @@
+[gd_scene load_steps=13 format=3 uid="uid://blv5uucj7be36"]
+
+[ext_resource type="Script" path="res://bird.gd" id="1_b30gc"]
+[ext_resource type="Texture2D" uid="uid://d1fsfvyu0gyrn" path="res://BirdSprite.png" id="2_gqhf2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8620"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivv8q"]
+atlas = ExtResource("2_gqhf2")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4ejm"]
+atlas = ExtResource("2_gqhf2")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pc087"]
+atlas = ExtResource("2_gqhf2")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sevoa"]
+atlas = ExtResource("2_gqhf2")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46dpd"]
+atlas = ExtResource("2_gqhf2")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0h6g6"]
+atlas = ExtResource("2_gqhf2")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqi7v"]
+atlas = ExtResource("2_gqhf2")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eg0x1"]
+atlas = ExtResource("2_gqhf2")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jm1fu"]
+animations = [{
+"frames": [{
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_ivv8q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4ejm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pc087")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sevoa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46dpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0h6g6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqi7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eg0x1")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 8.0
+}]
+
+[node name="Bird" type="RigidBody2D"]
+script = ExtResource("1_b30gc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(47, 35)
+shape = SubResource("RectangleShape2D_y8620")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(632.5, 379.5)
+scale = Vector2(10.0625, 7.3125)
+sprite_frames = SubResource("SpriteFrames_jm1fu")
+animation = &"flying"
