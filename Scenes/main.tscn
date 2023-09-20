@@ -35,4 +35,5 @@ debug_color = Color(0.490196, 0.439216, 0.984314, 0.419608)
 [node name="PipeSpawner" type="Timer" parent="."]
 autostart = true
 
+[connection signal="game_is_over" from="." to="Bird" method="_on_main_game_is_over"]
 [connection signal="timeout" from="PipeSpawner" to="." method="_on_pipe_spawner_timeout"]

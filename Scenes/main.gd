@@ -1,5 +1,7 @@
 extends Node
 
+signal game_is_over
+
 var PipesScene = preload("res://Scenes/pipes.tscn")
 
 enum GAME_STATE { PLAYING, STOP }
@@ -13,8 +15,8 @@ func spawn_pipes():
 func game_over():
 	state = GAME_STATE.STOP
 	$PipeSpawner.stop()
-	print_debug("game over")
-
+	game_is_over.emit()
+	
 func _on_pipe_spawner_timeout():
 	spawn_pipes()
 

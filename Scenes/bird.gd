@@ -13,3 +13,8 @@ func _process(delta: float) -> void:
 			linear_velocity = Vector2(0, -350)
 	
 	collision_layer = 0 if is_dead else 1
+
+
+func _on_main_game_is_over() -> void:
+	is_dead = true
+	$AnimatedSprite2D.stop()

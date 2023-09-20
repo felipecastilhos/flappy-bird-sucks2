@@ -9,10 +9,10 @@ var game
 const hardMaxPipeReducer: int = 180 #todo: use this based on score
 const mediumPipeSpacerReducer: int = 140
 
-const isGamePaused = false
+var isGamePaused = false
 
 func _ready():
-	game = get_tree().current_scene
+	get_tree().current_scene.game_is_over.connect(on_main_game_is_over)
 	spawn_pipes()
 
 func _process(delta: float) -> void:
@@ -27,7 +27,7 @@ func spawn_pipes():
 	$BottomPipe.position.y -= pipeSpacerReducer
 	
 func move_pipes(delta: float):
-	if game.state == game.GAME_STATE.PLAYING:
+	if !isGamePaused:
 		var newPosition: float = position.x - speed * delta
 		position.x = newPosition
 	
@@ -38,10 +38,12 @@ func free_pipes_on_left_screen():
 func _on_bottom_pipe_area_2d_body_entered(body):
 	on_body_collide(body)
 
-
 func _on_upper_pipe_area_2d_body_entered(body):
 	on_body_collide(body)
 	
 func on_body_collide(body):
 	if body.is_in_group('player'):
 		hit_the_player.emit()
+		
+func on_main_game_is_over():
+	isGamePaused = true
