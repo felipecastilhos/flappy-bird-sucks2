@@ -5,4 +5,4 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_pressed('Flap'):
-		linear_velocity = Vector2(0, -450)
+		linear_velocity = Vector2(0, -350)

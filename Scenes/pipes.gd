@@ -3,7 +3,7 @@ extends Node2D
 @export var speed: int = 400
 var rng = RandomNumberGenerator.new()
 
-const hardMaxPipeReducer: int = 180
+const hardMaxPipeReducer: int = 180 #todo: use this based on score
 const mediumPipeSpacerReducer: int = 140
 
 func _ready():
