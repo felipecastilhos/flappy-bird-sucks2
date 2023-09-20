@@ -4,6 +4,7 @@ signal hit_the_player
 
 @export var speed: int = 400
 var rng = RandomNumberGenerator.new()
+var game
 
 const hardMaxPipeReducer: int = 180 #todo: use this based on score
 const mediumPipeSpacerReducer: int = 140
@@ -11,6 +12,7 @@ const mediumPipeSpacerReducer: int = 140
 const isGamePaused = false
 
 func _ready():
+	game = get_tree().current_scene
 	spawn_pipes()
 
 func _process(delta: float) -> void:
@@ -24,15 +26,14 @@ func spawn_pipes():
 	
 	$BottomPipe.position.y -= pipeSpacerReducer
 	
-	
 func move_pipes(delta: float):
-	var newPosition: float = position.x - speed * delta
-	position.x = newPosition
+	if game.state == game.GAME_STATE.PLAYING:
+		var newPosition: float = position.x - speed * delta
+		position.x = newPosition
 	
 func free_pipes_on_left_screen():
 	if position.x <= -100:
 		queue_free()
-
 
 func _on_bottom_pipe_area_2d_body_entered(body):
 	on_body_collide(body)
