@@ -1,5 +1,6 @@
 # flappy-bird-sucks2
 Redoing my old bootleg project to study godot. This version of the game was made with Godot 4.2.
+
 ![image](https://github.com/felipecastilhos/flappy-bird-sucks2/assets/575708/b888598a-fafd-4f0b-9214-6afe2530f859)
 
 ### Assets Used:
