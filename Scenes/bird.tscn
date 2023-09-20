@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d1fsfvyu0gyrn" path="res://Sprites/BirdSprite.png" id="2_ptdnu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8620"]
-size = Vector2(125, 48.5)
+size = Vector2(39, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ivv8q"]
 atlas = ExtResource("2_ptdnu")
@@ -70,11 +70,11 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Bird" type="RigidBody2D"]
+[node name="Bird" type="RigidBody2D" groups=["player"]]
 script = ExtResource("1_g7stk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 5.25)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
+position = Vector2(-2.5, -0.5)
 shape = SubResource("RectangleShape2D_y8620")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2yxevfii3ip3"]
+[gd_scene load_steps=5 format=3 uid="uid://d2yxevfii3ip3"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_0tuyr"]
 [ext_resource type="PackedScene" uid="uid://blv5uucj7be36" path="res://Scenes/bird.tscn" id="1_cc66e"]
-[ext_resource type="PackedScene" uid="uid://bw8d3o4susi3" path="res://Scenes/pipes.tscn" id="2_qj2bm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ex7u8"]
 size = Vector2(20, 53.9167)
@@ -32,10 +31,6 @@ debug_color = Color(0.490196, 0.439216, 0.984314, 0.419608)
 position = Vector2(575, 659)
 shape = SubResource("RectangleShape2D_pjg4s")
 debug_color = Color(0.490196, 0.439216, 0.984314, 0.419608)
-
-[node name="Pipes" parent="." instance=ExtResource("2_qj2bm")]
-position = Vector2(1228, -250)
-speed = 400
 
 [node name="PipeSpawner" type="Timer" parent="."]
 autostart = true

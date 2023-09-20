@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bw8d3o4susi3"]
+[gd_scene load_steps=5 format=3 uid="uid://bw8d3o4susi3"]
 
 [ext_resource type="Texture2D" uid="uid://dc4sdjfice8ai" path="res://Sprites/Pipe.png" id="1_id4x6"]
 [ext_resource type="Script" path="res://Scenes/pipes.gd" id="1_onlqj"]
@@ -6,31 +6,46 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w6ig6"]
 size = Vector2(24, 159.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q7nlx"]
+size = Vector2(23, 157.8)
+
 [node name="Pipes" type="Node2D"]
 script = ExtResource("1_onlqj")
-speed = null
 
-[node name="UpperPipe" type="StaticBody2D" parent="."]
+[node name="UpperPipe" type="StaticBody2D" parent="." groups=["obstacle"]]
 position = Vector2(0, 63)
 scale = Vector2(4, 5)
 
 [node name="PipeTopCollision2D" type="CollisionShape2D" parent="UpperPipe"]
 shape = SubResource("RectangleShape2D_w6ig6")
-disabled = true
 
 [node name="UpperPipeSprite" type="Sprite2D" parent="UpperPipe"]
 rotation = -3.14159
 texture = ExtResource("1_id4x6")
 
-[node name="BottomPipe" type="StaticBody2D" parent="."]
+[node name="UpperPipeArea2d" type="Area2D" parent="UpperPipe/UpperPipeSprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperPipe/UpperPipeSprite/UpperPipeArea2d"]
+position = Vector2(0.124797, -0.10001)
+shape = SubResource("RectangleShape2D_q7nlx")
+
+[node name="BottomPipe" type="StaticBody2D" parent="." groups=["obstacle"]]
 position = Vector2(0, -235)
 scale = Vector2(4, 5)
 
 [node name="PipeTopCollision2D" type="CollisionShape2D" parent="BottomPipe"]
 position = Vector2(2.08165e-12, 283.75)
 shape = SubResource("RectangleShape2D_w6ig6")
-disabled = true
 
 [node name="BottomPipeSprite" type="Sprite2D" parent="BottomPipe"]
 position = Vector2(0, 281.8)
 texture = ExtResource("1_id4x6")
+
+[node name="BottomPipeArea2d" type="Area2D" parent="BottomPipe/BottomPipeSprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomPipe/BottomPipeSprite/BottomPipeArea2d"]
+position = Vector2(-2.38419e-07, 0.900024)
+shape = SubResource("RectangleShape2D_q7nlx")
+
+[connection signal="body_entered" from="UpperPipe/UpperPipeSprite/UpperPipeArea2d" to="." method="_on_upper_pipe_area_2d_body_entered"]
+[connection signal="body_entered" from="BottomPipe/BottomPipeSprite/BottomPipeArea2d" to="." method="_on_bottom_pipe_area_2d_body_entered"]
