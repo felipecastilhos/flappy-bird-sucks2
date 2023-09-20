@@ -1,12 +1,14 @@
 extends Node2D
 
-signal playerHitAPipe
+signal hit_the_player
 
 @export var speed: int = 400
 var rng = RandomNumberGenerator.new()
 
 const hardMaxPipeReducer: int = 180 #todo: use this based on score
 const mediumPipeSpacerReducer: int = 140
+
+const isGamePaused = false
 
 func _ready():
 	spawn_pipes()
@@ -41,4 +43,4 @@ func _on_upper_pipe_area_2d_body_entered(body):
 	
 func on_body_collide(body):
 	if body.is_in_group('player'):
-		print_debug('hit on pipe')	
+		hit_the_player.emit()
