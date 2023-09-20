@@ -1,12 +1,17 @@
 extends Node2D
 
-@export var speed = 400
+@export var speed: int = 400
 var rng = RandomNumberGenerator.new()
 
+const hardMaxPipeReducer: int = 180
+const mediumPipeSpacerReducer: int = 140
+
 func _ready():
+	var pipeSpacerReducer: int = rng.randf_range(40, mediumPipeSpacerReducer);
 	position.x = 1505.0
-	position.y = rng.randf_range(-294, 42)
-	scale = Vector2(3.412, 2.44)
+	position.y = rng.randf_range(-360, -215)
+	
+	$BottomPipe.position.y -= pipeSpacerReducer
 
 func _process(delta: float) -> void:
 	var newPosition: float = position.x - speed * delta

@@ -8,10 +8,11 @@ size = Vector2(24, 159.5)
 
 [node name="Pipes" type="Node2D"]
 script = ExtResource("1_onlqj")
+speed = null
 
 [node name="UpperPipe" type="StaticBody2D" parent="."]
-position = Vector2(2.08165e-12, 38)
-scale = Vector2(1, 1.28)
+position = Vector2(0, 63)
+scale = Vector2(4, 5)
 
 [node name="PipeTopCollision2D" type="CollisionShape2D" parent="UpperPipe"]
 shape = SubResource("RectangleShape2D_w6ig6")
@@ -22,7 +23,8 @@ rotation = -3.14159
 texture = ExtResource("1_id4x6")
 
 [node name="BottomPipe" type="StaticBody2D" parent="."]
-scale = Vector2(1, 1.22044)
+position = Vector2(0, -235)
+scale = Vector2(4, 5)
 
 [node name="PipeTopCollision2D" type="CollisionShape2D" parent="BottomPipe"]
 position = Vector2(2.08165e-12, 283.75)
@@ -30,5 +32,5 @@ shape = SubResource("RectangleShape2D_w6ig6")
 disabled = true
 
 [node name="BottomPipeSprite" type="Sprite2D" parent="BottomPipe"]
-position = Vector2(2.08165e-12, 283)
+position = Vector2(0, 281.8)
 texture = ExtResource("1_id4x6")
