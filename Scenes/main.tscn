@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2yxevfii3ip3"]
+[gd_scene load_steps=6 format=3 uid="uid://d2yxevfii3ip3"]
 
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_0tuyr"]
 [ext_resource type="PackedScene" uid="uid://blv5uucj7be36" path="res://Scenes/bird.tscn" id="1_cc66e"]
 [ext_resource type="PackedScene" uid="uid://bw8d3o4susi3" path="res://Scenes/pipes.tscn" id="2_qj2bm"]
 
@@ -10,6 +11,7 @@ size = Vector2(20, 53.9167)
 size = Vector2(1152, 20)
 
 [node name="main" type="Node2D"]
+script = ExtResource("1_0tuyr")
 
 [node name="Bird" parent="." instance=ExtResource("1_cc66e")]
 position = Vector2(224, 309)
@@ -32,5 +34,10 @@ shape = SubResource("RectangleShape2D_pjg4s")
 debug_color = Color(0.490196, 0.439216, 0.984314, 0.419608)
 
 [node name="Pipes" parent="." instance=ExtResource("2_qj2bm")]
-position = Vector2(1048, -51)
+position = Vector2(1197, 42)
 scale = Vector2(3.41184, 2.44)
+
+[node name="PipeSpawner" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="PipeSpawner" to="." method="_on_pipe_spawner_timeout"]
