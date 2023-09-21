@@ -8,6 +8,9 @@ enum GAME_STATE { PLAYING, STOP }
 var state: GAME_STATE = GAME_STATE.PLAYING
 var score: int = 0
 
+func _process(delta):
+	$ScoreCountLabel.text = str(score)
+
 func spawn_pipes():
 	var pipes = PipesScene.instantiate()
 	add_child(pipes)
@@ -16,18 +19,17 @@ func spawn_pipes():
 	
 func score_point():
 	score += 1
-	print_debug(score)
 	
 func game_over():
 	state = GAME_STATE.STOP
 	$PipeSpawner.stop()
-	$Label.visible = true
+	$MessageLabel.visible = true
 	game_is_over.emit()
 	
 func _on_pipe_spawner_timeout():
 	spawn_pipes()
 
-func _on_pipes_hit_the_player(): 
+func _on_pipes_hit_the_player():
 	game_over()
 	
 func _on_pipes_score_area_reached():

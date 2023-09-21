@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2yxevfii3ip3"]
+[gd_scene load_steps=9 format=3 uid="uid://d2yxevfii3ip3"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_0tuyr"]
 [ext_resource type="PackedScene" uid="uid://blv5uucj7be36" path="res://Scenes/bird.tscn" id="1_cc66e"]
@@ -17,6 +17,15 @@ font_color = Color(0.960784, 0.313726, 0.866667, 1)
 outline_size = 1
 outline_color = Color(0.0235294, 0.0235294, 0.0235294, 1)
 
+[sub_resource type="SystemFont" id="SystemFont_ma7g2"]
+font_weight = 475
+
+[sub_resource type="LabelSettings" id="LabelSettings_ju8g3"]
+line_spacing = 0.0
+font = SubResource("SystemFont_ma7g2")
+font_size = 48
+font_color = Color(0.960784, 0.313726, 0.866667, 1)
+
 [node name="main" type="Node2D"]
 z_as_relative = false
 script = ExtResource("1_0tuyr")
@@ -33,7 +42,7 @@ shape = SubResource("RectangleShape2D_ex7u8")
 [node name="GameBoundaries" type="StaticBody2D" parent="."]
 
 [node name="UpperLimitsShape2D" type="CollisionShape2D" parent="GameBoundaries"]
-position = Vector2(579, 9)
+position = Vector2(580, -7)
 shape = SubResource("RectangleShape2D_pjg4s")
 debug_color = Color(0.490196, 0.439216, 0.984314, 0.419608)
 
@@ -45,7 +54,7 @@ debug_color = Color(0.490196, 0.439216, 0.984314, 0.419608)
 [node name="PipeSpawner" type="Timer" parent="."]
 autostart = true
 
-[node name="Label" type="Label" parent="."]
+[node name="MessageLabel" type="Label" parent="."]
 visible = false
 z_index = 32
 offset_left = 298.0
@@ -57,6 +66,16 @@ text = "GAME OVER
 I DID KNOW U SUCK ):"
 label_settings = SubResource("LabelSettings_fv8ou")
 horizontal_alignment = 1
+
+[node name="ScoreCountLabel" type="Label" parent="."]
+z_index = 32
+offset_left = 638.0
+offset_top = 1.0
+offset_right = 1135.0
+offset_bottom = 68.0
+text = "2233321"
+label_settings = SubResource("LabelSettings_ju8g3")
+horizontal_alignment = 2
 
 [connection signal="game_is_over" from="." to="Bird" method="_on_main_game_is_over"]
 [connection signal="timeout" from="PipeSpawner" to="." method="_on_pipe_spawner_timeout"]
