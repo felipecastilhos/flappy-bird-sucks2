@@ -23,9 +23,10 @@ shape = SubResource("RectangleShape2D_w6ig6")
 rotation = -3.14159
 texture = ExtResource("1_id4x6")
 
-[node name="UpperPipeHitArea2d" type="Area2D" parent="UpperPipe/UpperPipeSprite"]
+[node name="UpperPipeHitArea2d" type="Area2D" parent="UpperPipe"]
+rotation = -3.14159
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperPipe/UpperPipeSprite/UpperPipeHitArea2d"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperPipe/UpperPipeHitArea2d"]
 position = Vector2(0.124797, -0.10001)
 shape = SubResource("RectangleShape2D_q7nlx")
 
@@ -41,11 +42,12 @@ shape = SubResource("RectangleShape2D_w6ig6")
 position = Vector2(0, 281.8)
 texture = ExtResource("1_id4x6")
 
-[node name="BottomPipeHitArea2d" type="Area2D" parent="BottomPipe/BottomPipeSprite"]
+[node name="BottomPipeHitArea2d" type="Area2D" parent="BottomPipe"]
+position = Vector2(0, 281.8)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomPipe/BottomPipeSprite/BottomPipeHitArea2d"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomPipe/BottomPipeHitArea2d"]
 position = Vector2(-2.38419e-07, 0.900024)
 shape = SubResource("RectangleShape2D_q7nlx")
 
-[connection signal="body_entered" from="UpperPipe/UpperPipeSprite/UpperPipeHitArea2d" to="." method="_on_upper_pipe_hit_area_2d_body_entered"]
-[connection signal="body_entered" from="BottomPipe/BottomPipeSprite/BottomPipeHitArea2d" to="." method="_on_bottom_pipe_hit_area_2d_body_entered"]
+[connection signal="body_entered" from="UpperPipe/UpperPipeHitArea2d" to="." method="_on_upper_pipe_hit_area_2d_body_entered"]
+[connection signal="body_entered" from="BottomPipe/BottomPipeHitArea2d" to="." method="_on_bottom_pipe_hit_area_2d_body_entered"]
