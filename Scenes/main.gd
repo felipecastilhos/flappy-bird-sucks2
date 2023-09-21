@@ -15,6 +15,7 @@ func spawn_pipes():
 func game_over():
 	state = GAME_STATE.STOP
 	$PipeSpawner.stop()
+	$Label.visible = true
 	game_is_over.emit()
 	
 func _on_pipe_spawner_timeout():
