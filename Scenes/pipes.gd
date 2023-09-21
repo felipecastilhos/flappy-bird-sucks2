@@ -35,10 +35,10 @@ func free_pipes_on_left_screen():
 	if position.x <= -100:
 		queue_free()
 
-func _on_bottom_pipe_area_2d_body_entered(body):
+func _on_bottom_pipe_hit_area_2d_body_entered(body):
 	on_body_collide(body)
 
-func _on_upper_pipe_area_2d_body_entered(body):
+func _on_upper_pipe_hit_area_2d_body_entered(body):
 	on_body_collide(body)
 	
 func on_body_collide(body):
