@@ -1,10 +1,10 @@
 extends Node2D
 
 signal hit_the_player
+signal score_area_reached
 
 @export var speed: int = 400
 var rng = RandomNumberGenerator.new()
-var game
 
 const hardMaxPipeReducer: int = 180 #todo: use this based on score
 const mediumPipeSpacerReducer: int = 140
@@ -35,15 +35,20 @@ func free_pipes_on_left_screen():
 	if position.x <= -100:
 		queue_free()
 
-func _on_bottom_pipe_hit_area_2d_body_entered(body):
-	on_body_collide(body)
-
-func _on_upper_pipe_hit_area_2d_body_entered(body):
-	on_body_collide(body)
-	
 func on_body_collide(body):
 	if body.is_in_group('player'):
 		hit_the_player.emit()
 		
 func on_main_game_is_over():
 	isGamePaused = true
+
+func _on_bottom_pipe_hit_area_2d_body_entered(body):
+	on_body_collide(body)
+
+func _on_upper_pipe_hit_area_2d_body_entered(body):
+	on_body_collide(body)
+
+func _on_score_area_2d_body_entered(body):
+	if body.is_in_group('player'):
+		print_debug('SCORE')
+		score_area_reached.emit()
