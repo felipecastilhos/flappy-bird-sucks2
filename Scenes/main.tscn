@@ -54,7 +54,10 @@ debug_color = Color(0.490196, 0.439216, 0.984314, 0.419608)
 [node name="PipeSpawner" type="Timer" parent="."]
 autostart = true
 
-[node name="MessageLabel" type="Label" parent="."]
+[node name="HUD" type="Node2D" parent="."]
+z_index = 100
+
+[node name="MessageLabel" type="Label" parent="HUD"]
 visible = false
 z_index = 32
 offset_left = 298.0
@@ -67,7 +70,7 @@ I DID KNOW U SUCK ):"
 label_settings = SubResource("LabelSettings_fv8ou")
 horizontal_alignment = 1
 
-[node name="ScoreCountLabel" type="Label" parent="."]
+[node name="ScoreCountLabel" type="Label" parent="HUD"]
 z_index = 32
 offset_left = 638.0
 offset_top = 1.0
@@ -77,5 +80,14 @@ text = "2233321"
 label_settings = SubResource("LabelSettings_ju8g3")
 horizontal_alignment = 2
 
+[node name="StartButton" type="Button" parent="HUD"]
+visible = false
+offset_left = 451.0
+offset_top = 452.0
+offset_right = 707.0
+offset_bottom = 523.0
+text = "Restart"
+
 [connection signal="game_is_over" from="." to="Bird" method="_on_main_game_is_over"]
 [connection signal="timeout" from="PipeSpawner" to="." method="_on_pipe_spawner_timeout"]
+[connection signal="pressed" from="HUD/StartButton" to="." method="_on_start_button_pressed"]

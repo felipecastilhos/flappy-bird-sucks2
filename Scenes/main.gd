@@ -9,7 +9,7 @@ var state: GAME_STATE = GAME_STATE.PLAYING
 var score: int = 0
 
 func _process(delta):
-	$ScoreCountLabel.text = str(score)
+	$HUD/ScoreCountLabel.text = str(score)
  
 func spawn_pipes():
 	var pipes = PipesScene.instantiate()
@@ -26,7 +26,8 @@ func score_point():
 func game_over():
 	state = GAME_STATE.STOP
 	$PipeSpawner.stop()
-	$MessageLabel.visible = true
+	$HUD/MessageLabel.visible = true
+	$HUD/StartButton.visible = true
 	game_is_over.emit()
 	
 func _on_pipe_spawner_timeout():
@@ -41,3 +42,5 @@ func _on_pipes_hit_the_player():
 func _on_pipes_score_area_reached():
 	score_point()
 	
+func _on_start_button_pressed() -> void:
+	get_tree().reload_current_scene()
