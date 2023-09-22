@@ -1,8 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2yxevfii3ip3"]
+[gd_scene load_steps=14 format=3 uid="uid://d2yxevfii3ip3"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_0tuyr"]
 [ext_resource type="PackedScene" uid="uid://blv5uucj7be36" path="res://Scenes/bird.tscn" id="1_cc66e"]
 [ext_resource type="FontFile" uid="uid://bg58l4ke2r70w" path="res://Fonts/StayPixelRegular-EaOxl.ttf" id="3_0ki3e"]
+[ext_resource type="Texture2D" uid="uid://0yjylnvc5kee" path="res://Sprites/Background/parallax-00.png" id="4_it5xx"]
+[ext_resource type="Texture2D" uid="uid://c2dklw3eywai8" path="res://Sprites/Background/parallax-01.png" id="5_6bqcn"]
+[ext_resource type="Texture2D" uid="uid://byti2ps56vup" path="res://Sprites/Background/parallax-02.png" id="6_6qomc"]
+[ext_resource type="Texture2D" uid="uid://bumlokmapre2s" path="res://Sprites/Background/parallax-03.png" id="7_cfekr"]
+[ext_resource type="Texture2D" uid="uid://bbjdaerre3k24" path="res://Sprites/Background/parallax-04.png" id="8_x83au"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ex7u8"]
 size = Vector2(20, 53.9167)
@@ -13,7 +18,7 @@ size = Vector2(1152, 20)
 [sub_resource type="LabelSettings" id="LabelSettings_fv8ou"]
 font = ExtResource("3_0ki3e")
 font_size = 72
-font_color = Color(0.960784, 0.313726, 0.866667, 1)
+font_color = Color(0.0980392, 0.223529, 0.423529, 1)
 outline_size = 1
 outline_color = Color(0.0235294, 0.0235294, 0.0235294, 1)
 
@@ -24,11 +29,25 @@ font_weight = 475
 line_spacing = 0.0
 font = SubResource("SystemFont_ma7g2")
 font_size = 48
-font_color = Color(0.960784, 0.313726, 0.866667, 1)
+font_color = Color(0.0392157, 0.219608, 0.392157, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
 [node name="main" type="Node2D"]
 z_as_relative = false
 script = ExtResource("1_0tuyr")
+
+[node name="ParallaxForeground" type="ParallaxBackground" parent="."]
+layer = 1
+
+[node name="ForegroundLayer" type="ParallaxLayer" parent="ParallaxForeground"]
+z_index = 32
+motion_scale = Vector2(2, 2)
+motion_mirroring = Vector2(1440, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxForeground/ForegroundLayer"]
+position = Vector2(661, 587)
+texture = ExtResource("8_x83au")
 
 [node name="Bird" parent="." instance=ExtResource("1_cc66e")]
 position = Vector2(224, 309)
@@ -87,6 +106,39 @@ offset_top = 452.0
 offset_right = 707.0
 offset_bottom = 523.0
 text = "Restart"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(678, 329)
+scale = Vector2(0.940278, 1.83889)
+texture = ExtResource("4_it5xx")
+
+[node name="BackgroundLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1152, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BackgroundLayer2"]
+position = Vector2(691, 475)
+texture = ExtResource("5_6bqcn")
+
+[node name="BackgroundLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1440, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BackgroundLayer3"]
+position = Vector2(662, 503)
+texture = ExtResource("6_6qomc")
+
+[node name="BackgroundLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1440, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BackgroundLayer4"]
+position = Vector2(659, 497)
+texture = ExtResource("7_cfekr")
 
 [connection signal="game_is_over" from="." to="Bird" method="_on_main_game_is_over"]
 [connection signal="timeout" from="PipeSpawner" to="." method="_on_pipe_spawner_timeout"]

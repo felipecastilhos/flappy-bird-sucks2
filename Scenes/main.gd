@@ -8,9 +8,30 @@ enum GAME_STATE { PLAYING, STOP }
 var state: GAME_STATE = GAME_STATE.PLAYING
 var score: int = 0
 
-func _process(delta):
+func _process(delta: float):
 	$HUD/ScoreCountLabel.text = str(score)
- 
+	var parallaxLayer1
+	
+	move_parallax_background(delta)
+
+func move_parallax_background(delta: float):
+	if state == GAME_STATE.PLAYING:
+		var backgroundLayer2 = $ParallaxBackground/BackgroundLayer2
+		var backgroundLayer3 = $ParallaxBackground/BackgroundLayer3
+		var backgroundLayer4 = $ParallaxBackground/BackgroundLayer4
+		var foregroundLayer = $ParallaxForeground/ForegroundLayer
+
+		var speed2 = 10
+		var speed3 = 25
+		var speed4 = 25
+		var speedForeground = 500
+
+		backgroundLayer2.motion_offset.x += delta * speed2
+		backgroundLayer3.motion_offset.x -= delta * speed3
+		backgroundLayer4.motion_offset.x -= delta * speed4
+		foregroundLayer.motion_offset.x -= delta * speedForeground
+
+
 func spawn_pipes():
 	var pipes = PipesScene.instantiate()
 	pipes.speed += score
