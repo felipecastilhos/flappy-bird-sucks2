@@ -50,6 +50,7 @@ func spawn_pipes():
 	add_child(pipes)
 	pipes.player_was_hit.connect(_on_pipes_player_was_hit)
 	pipes.score_area_was_reached.connect(_on_pipes_score_area_reached)
+	game_was_over.connect(pipes.on_game_was_over)
 	
 func score_point():
 	score += scoreIncrement

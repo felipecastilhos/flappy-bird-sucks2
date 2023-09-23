@@ -11,7 +11,7 @@ var pipeSpaceReducer: int = 140
 var isGamePaused = false
 
 func _ready():
-	get_tree().current_scene.game_was_over.connect(on_main_game_was_over)
+	#get_tree().current_scene.game_was_over.connect(on_main_game_was_over)
 	spawn_pipes()
 
 func _process(delta: float) -> void:
@@ -38,7 +38,7 @@ func on_body_collide(body):
 	if body.is_in_group('player'):
 		player_was_hit .emit()
 		
-func on_main_game_was_over():
+func on_game_was_over():
 	isGamePaused = true
 
 func _on_bottom_pipe_hit_area_2d_body_entered(body):
