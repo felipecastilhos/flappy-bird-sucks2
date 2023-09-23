@@ -8,6 +8,9 @@ enum GAME_STATE { PLAYING, STOP }
 var state: GAME_STATE = GAME_STATE.PLAYING
 var score: int = 0
 
+func _ready(): 
+	game_is_over.connect($Camera2D.apply_shake)
+	
 func _process(delta: float):
 	$HUD/ScoreCountLabel.text = str(score)
 	var parallaxLayer1
@@ -36,7 +39,6 @@ func spawn_pipes():
 	var pipes = PipesScene.instantiate()
 	pipes.speed += score
 	pipes.pipeSpaceReducer += score
-	print_debug("Pipe speed: " + str(pipes.speed))
 	add_child(pipes)
 	pipes.hit_the_player.connect(_on_pipes_hit_the_player)
 	pipes.score_area_reached.connect(_on_pipes_score_area_reached)
@@ -53,7 +55,6 @@ func game_over():
 	
 func _on_pipe_spawner_timeout():
 	var score_ratio = score / 2
-	print_debug("Score ratio: " + str(score_ratio))
 	$PipeSpawner.wait_time -= 1 * score_ratio
 	spawn_pipes()
 
