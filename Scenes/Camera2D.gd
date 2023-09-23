@@ -17,3 +17,7 @@ func apply_shake() -> void:
 
 func random_offset() -> Vector2:
 	return Vector2(rng.randf_range(-shake_strength, shake_strength), rng.randf_range(-shake_strength, shake_strength))
+
+
+func _on_main_game_was_over() -> void:
+	apply_shake()

@@ -140,10 +140,11 @@ motion_mirroring = Vector2(1440, 2.08165e-12)
 position = Vector2(661, 587)
 texture = ExtResource("8_x83au")
 
-[node name="Camera2D" type="Camera2D" parent="ParallaxForeground"]
+[node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
 script = ExtResource("9_oybty")
 
-[connection signal="game_is_over" from="." to="Bird" method="_on_main_game_is_over"]
+[connection signal="game_was_over" from="." to="Bird" method="_on_main_game_was_over"]
+[connection signal="game_was_over" from="." to="Camera2D" method="_on_main_game_was_over"]
 [connection signal="timeout" from="PipeSpawner" to="." method="_on_pipe_spawner_timeout"]
 [connection signal="pressed" from="HUD/StartButton" to="." method="_on_start_button_pressed"]

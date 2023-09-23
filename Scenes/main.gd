@@ -1,6 +1,6 @@
 extends Node
 
-signal game_is_over
+signal game_was_over
 
 var PipesScene = preload("res://Scenes/pipes.tscn")
 
@@ -48,7 +48,7 @@ func game_over():
 	$PipeSpawner.stop()
 	$HUD/MessageLabel.visible = true
 	$HUD/StartButton.visible = true
-	game_is_over.emit()
+	game_was_over.emit()
 	
 func _on_pipe_spawner_timeout():
 	var score_ratio = score / 2

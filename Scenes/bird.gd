@@ -15,6 +15,6 @@ func _process(delta: float) -> void:
 	collision_layer = 0 if is_dead else 1
 
 
-func _on_main_game_is_over() -> void:
+func _on_main_game_was_over() -> void:
 	is_dead = true
 	$AnimatedSprite2D.stop()
