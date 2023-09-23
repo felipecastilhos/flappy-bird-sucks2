@@ -4,33 +4,34 @@ signal game_was_over
 
 var PipesScene = preload("res://Scenes/pipes.tscn")
 
+@onready var parallaxBackground:ParallaxBackground = $ParallaxBackground
+@onready var hud: CanvasLayer = $HUD
+@onready var foregroundLayer: ParallaxLayer = $ParallaxForeground/ForegroundLayer
+@onready var pipeSpawner: Timer = $PipeSpawner
+
+@onready var messageLabel: Label = hud.get_node('MessageLabel')
+@onready var scoreCountLabel: Label = hud.get_node('ScoreCountLabel')
+@onready var startButton: Button = hud.get_node('StartButton')
+@onready var backgroundLayer2: ParallaxLayer = parallaxBackground.get_node('BackgroundLayer2')
+@onready var backgroundLayer3: ParallaxLayer = parallaxBackground.get_node('BackgroundLayer3')
+@onready var backgroundLayer4: ParallaxLayer = parallaxBackground.get_node('BackgroundLayer4')
+
 enum GAME_STATE { PLAYING, STOP }
 var state: GAME_STATE = GAME_STATE.PLAYING
 var score: int = 0
 	
 func _process(delta: float):
-	$HUD/ScoreCountLabel.text = str(score)
+	scoreCountLabel.text = str(score)
 	var parallaxLayer1
 	
-	move_parallax_background(delta)
+	if state == GAME_STATE.PLAYING: 
+		move_parallax_background(delta)
 
 func move_parallax_background(delta: float):
-	if state == GAME_STATE.PLAYING:
-		var backgroundLayer2 = $ParallaxBackground/BackgroundLayer2
-		var backgroundLayer3 = $ParallaxBackground/BackgroundLayer3
-		var backgroundLayer4 = $ParallaxBackground/BackgroundLayer4
-		var foregroundLayer = $ParallaxForeground/ForegroundLayer
-
-		var speed2 = 10
-		var speed3 = 25
-		var speed4 = 25
-		var speedForeground = 500
-
-		backgroundLayer2.motion_offset.x += delta * speed2
-		backgroundLayer3.motion_offset.x -= delta * speed3
-		backgroundLayer4.motion_offset.x -= delta * speed4
-		foregroundLayer.motion_offset.x -= delta * speedForeground
-
+		backgroundLayer2.motion_offset.x += delta * 10
+		backgroundLayer3.motion_offset.x -= delta * 25
+		backgroundLayer4.motion_offset.x -= delta * 25
+		foregroundLayer.motion_offset.x -= delta * 500
 
 func spawn_pipes():
 	var pipes = PipesScene.instantiate()
@@ -45,14 +46,14 @@ func score_point():
 	
 func game_over():
 	state = GAME_STATE.STOP
-	$PipeSpawner.stop()
-	$HUD/MessageLabel.visible = true
-	$HUD/StartButton.visible = true
+	pipeSpawner.stop()
+	messageLabel.visible = true
+	startButton.visible = true
 	game_was_over.emit()
 	
 func _on_pipe_spawner_timeout():
 	var score_ratio = score / 2
-	$PipeSpawner.wait_time -= 1 * score_ratio
+	pipeSpawner.wait_time -= 1 * score_ratio
 	spawn_pipes()
 
 func _on_pipes_player_was_hit():
