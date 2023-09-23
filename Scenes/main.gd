@@ -16,9 +16,19 @@ var PipesScene = preload("res://Scenes/pipes.tscn")
 @onready var backgroundLayer3: ParallaxLayer = parallaxBackground.get_node('BackgroundLayer3')
 @onready var backgroundLayer4: ParallaxLayer = parallaxBackground.get_node('BackgroundLayer4')
 
+
 enum GAME_STATE { PLAYING, STOP }
-var state: GAME_STATE = GAME_STATE.PLAYING
-var score: int = 0
+@export_category('Game Configs')
+@export var state: GAME_STATE = GAME_STATE.PLAYING
+@export var score: int = 0
+@export var scoreIncrement: int = 1
+
+@export_category('Parallax Speed')
+@export var backgroundParallaxSpeed1 = 10
+@export var backgroundParallaxSpeed2 = 25
+@export var backgroundParallaxSpeed3 = 25
+@export var backgroundParallaxSpeed4 = 500
+
 	
 func _process(delta: float):
 	scoreCountLabel.text = str(score)
@@ -28,10 +38,10 @@ func _process(delta: float):
 		move_parallax_background(delta)
 
 func move_parallax_background(delta: float):
-		backgroundLayer2.motion_offset.x += delta * 10
-		backgroundLayer3.motion_offset.x -= delta * 25
-		backgroundLayer4.motion_offset.x -= delta * 25
-		foregroundLayer.motion_offset.x -= delta * 500
+		backgroundLayer2.motion_offset.x += delta * backgroundParallaxSpeed1
+		backgroundLayer3.motion_offset.x -= delta * backgroundParallaxSpeed2
+		backgroundLayer4.motion_offset.x -= delta * backgroundParallaxSpeed3
+		foregroundLayer.motion_offset.x -= delta * backgroundParallaxSpeed4
 
 func spawn_pipes():
 	var pipes = PipesScene.instantiate()
@@ -42,7 +52,7 @@ func spawn_pipes():
 	pipes.score_area_was_reached.connect(_on_pipes_score_area_reached)
 	
 func score_point():
-	score += 1
+	score += scoreIncrement
 	
 func game_over():
 	state = GAME_STATE.STOP
