@@ -4,14 +4,15 @@ signal player_was_hit
 signal score_area_was_reached
 
 @export var speed: int = 400
-var rng = RandomNumberGenerator.new()
+@export_category('Pipe Setyo')
+@export var bottomPipeMinLimit: int = 140
+@export var bottomPipeMaxLimit: int = 140
 
-var pipeSpaceReducer: int = 140
+var rng = RandomNumberGenerator.new()
 
 var isGamePaused = false
 
 func _ready():
-	#get_tree().current_scene.game_was_over.connect(on_main_game_was_over)
 	spawn_pipes()
 
 func _process(delta: float) -> void:
@@ -19,7 +20,7 @@ func _process(delta: float) -> void:
 	free_pipes_on_left_screen()
 		
 func spawn_pipes():
-	var spaceReducer: int = rng.randf_range(40, pipeSpaceReducer);
+	var spaceReducer: int = rng.randf_range(bottomPipeMinLimit, bottomPipeMaxLimit);
 	position.x = 1505.0
 	position.y = rng.randf_range(-360, -215)
 	

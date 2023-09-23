@@ -22,6 +22,7 @@ enum GAME_STATE { PLAYING, STOP }
 @export var state: GAME_STATE = GAME_STATE.PLAYING
 @export var score: int = 0
 @export var scoreIncrement: int = 1
+@export var gameDificultyMultiplier: float = 1
 
 @export_category('Parallax Speed')
 @export var backgroundParallaxSpeed1 = 10
@@ -33,7 +34,6 @@ enum GAME_STATE { PLAYING, STOP }
 func _process(delta: float):
 	scoreCountLabel.text = str(score)
 	var parallaxLayer1
-	
 	if state == GAME_STATE.PLAYING: 
 		move_parallax_background(delta)
 
@@ -45,8 +45,8 @@ func move_parallax_background(delta: float):
 
 func spawn_pipes():
 	var pipes = PipesScene.instantiate()
-	pipes.speed += score
-	pipes.pipeSpaceReducer += score
+	pipes.speed += score * gameDificultyMultiplier
+	pipes.bottomPipeMaxLimit += score * gameDificultyMultiplier
 	add_child(pipes)
 	pipes.player_was_hit.connect(_on_pipes_player_was_hit)
 	pipes.score_area_was_reached.connect(_on_pipes_score_area_reached)
@@ -54,6 +54,8 @@ func spawn_pipes():
 	
 func score_point():
 	score += scoreIncrement
+	if score % 10 == 0:
+		gameDificultyMultiplier += 0.1
 	
 func game_over():
 	state = GAME_STATE.STOP
