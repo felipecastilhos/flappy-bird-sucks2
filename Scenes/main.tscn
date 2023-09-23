@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d2yxevfii3ip3"]
+[gd_scene load_steps=14 format=3 uid="uid://d2yxevfii3ip3"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_0tuyr"]
 [ext_resource type="PackedScene" uid="uid://blv5uucj7be36" path="res://Scenes/bird.tscn" id="1_cc66e"]
@@ -9,9 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bumlokmapre2s" path="res://Sprites/Background/parallax-03.png" id="7_cfekr"]
 [ext_resource type="Texture2D" uid="uid://bbjdaerre3k24" path="res://Sprites/Background/parallax-04.png" id="8_x83au"]
 [ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="9_oybty"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ex7u8"]
-size = Vector2(20, 53.9167)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjg4s"]
 size = Vector2(1152, 20)
@@ -42,11 +39,6 @@ script = ExtResource("1_0tuyr")
 position = Vector2(224, 309)
 lock_rotation = true
 
-[node name="ScoreArea" type="CollisionShape2D" parent="."]
-position = Vector2(-120, 323)
-scale = Vector2(12, 12)
-shape = SubResource("RectangleShape2D_ex7u8")
-
 [node name="GameBoundaries" type="StaticBody2D" parent="."]
 
 [node name="UpperLimitsShape2D" type="CollisionShape2D" parent="GameBoundaries"]
@@ -66,7 +58,6 @@ autostart = true
 
 [node name="MessageLabel" type="Label" parent="HUD"]
 visible = false
-z_index = 32
 offset_left = 298.0
 offset_top = 234.0
 offset_right = 860.0
@@ -78,7 +69,6 @@ label_settings = SubResource("LabelSettings_fv8ou")
 horizontal_alignment = 1
 
 [node name="ScoreCountLabel" type="Label" parent="HUD"]
-z_index = 32
 offset_left = 638.0
 offset_top = 1.0
 offset_right = 1135.0
