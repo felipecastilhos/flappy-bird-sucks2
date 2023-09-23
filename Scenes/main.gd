@@ -7,9 +7,6 @@ var PipesScene = preload("res://Scenes/pipes.tscn")
 enum GAME_STATE { PLAYING, STOP }
 var state: GAME_STATE = GAME_STATE.PLAYING
 var score: int = 0
-
-func _ready(): 
-	game_is_over.connect($Camera2D.apply_shake)
 	
 func _process(delta: float):
 	$HUD/ScoreCountLabel.text = str(score)

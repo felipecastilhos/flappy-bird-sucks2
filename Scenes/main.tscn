@@ -38,18 +38,6 @@ outline_color = Color(0, 0, 0, 1)
 z_as_relative = false
 script = ExtResource("1_0tuyr")
 
-[node name="ParallaxForeground" type="ParallaxBackground" parent="."]
-layer = 1
-
-[node name="ForegroundLayer" type="ParallaxLayer" parent="ParallaxForeground"]
-z_index = 32
-motion_scale = Vector2(2, 2)
-motion_mirroring = Vector2(1440, 2.08165e-12)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxForeground/ForegroundLayer"]
-position = Vector2(661, 587)
-texture = ExtResource("8_x83au")
-
 [node name="Bird" parent="." instance=ExtResource("1_cc66e")]
 position = Vector2(224, 309)
 lock_rotation = true
@@ -74,8 +62,7 @@ debug_color = Color(0.490196, 0.439216, 0.984314, 0.419608)
 [node name="PipeSpawner" type="Timer" parent="."]
 autostart = true
 
-[node name="HUD" type="Node2D" parent="."]
-z_index = 100
+[node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="MessageLabel" type="Label" parent="HUD"]
 visible = false
@@ -141,7 +128,19 @@ motion_mirroring = Vector2(1440, 2.08165e-12)
 position = Vector2(659, 497)
 texture = ExtResource("7_cfekr")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="ParallaxForeground" type="ParallaxBackground" parent="."]
+layer = 1
+
+[node name="ForegroundLayer" type="ParallaxLayer" parent="ParallaxForeground"]
+z_index = 32
+motion_scale = Vector2(2, 2)
+motion_mirroring = Vector2(1440, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxForeground/ForegroundLayer"]
+position = Vector2(661, 587)
+texture = ExtResource("8_x83au")
+
+[node name="Camera2D" type="Camera2D" parent="ParallaxForeground"]
 position = Vector2(576, 324)
 script = ExtResource("9_oybty")
 
