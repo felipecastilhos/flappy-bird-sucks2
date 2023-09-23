@@ -1,7 +1,7 @@
 extends Node2D
 
-signal hit_the_player
-signal score_area_reached
+signal player_was_hit
+signal score_area_was_reached
 
 @export var speed: int = 400
 var rng = RandomNumberGenerator.new()
@@ -36,7 +36,7 @@ func free_pipes_on_left_screen():
 
 func on_body_collide(body):
 	if body.is_in_group('player'):
-		hit_the_player.emit()
+		player_was_hit .emit()
 		
 func on_main_game_was_over():
 	isGamePaused = true
@@ -49,4 +49,4 @@ func _on_upper_pipe_hit_area_2d_body_entered(body):
 
 func _on_score_area_2d_body_entered(body):
 	if body.is_in_group('player'):
-		score_area_reached.emit()
+		score_area_was_reached.emit()

@@ -37,8 +37,8 @@ func spawn_pipes():
 	pipes.speed += score
 	pipes.pipeSpaceReducer += score
 	add_child(pipes)
-	pipes.hit_the_player.connect(_on_pipes_hit_the_player)
-	pipes.score_area_reached.connect(_on_pipes_score_area_reached)
+	pipes.player_was_hit.connect(_on_pipes_player_was_hit)
+	pipes.score_area_was_reached.connect(_on_pipes_score_area_reached)
 	
 func score_point():
 	score += 1
@@ -55,7 +55,7 @@ func _on_pipe_spawner_timeout():
 	$PipeSpawner.wait_time -= 1 * score_ratio
 	spawn_pipes()
 
-func _on_pipes_hit_the_player():
+func _on_pipes_player_was_hit():
 	game_over()
 	
 func _on_pipes_score_area_reached():
