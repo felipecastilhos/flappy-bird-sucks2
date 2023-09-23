@@ -1,20 +1,18 @@
 extends RigidBody2D
 
-var is_dead: bool = false
+@onready var animatedSprite:AnimatedSprite2D = $AnimatedSprite2D
+@export var jumpForce = 350
+
+var is_alive: bool = true
 
 func _ready() -> void:
-	$AnimatedSprite2D.play()
+	animatedSprite.play()
 
 func _process(delta: float) -> void:
-	if is_dead:
-		linear_velocity = Vector2(0, 350)
-	else:
+	if is_alive:
 		if Input.is_action_pressed('Flap'):
-			linear_velocity = Vector2(0, -350)
-	
-	collision_layer = 0 if is_dead else 1
-
+			linear_velocity = Vector2(0, -jumpForce)
 
 func _on_main_game_was_over() -> void:
-	is_dead = true
-	$AnimatedSprite2D.stop()
+	is_alive = false
+	animatedSprite.stop()
