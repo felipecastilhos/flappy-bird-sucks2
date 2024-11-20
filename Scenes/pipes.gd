@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	free_pipes_on_left_screen()
 		
 func spawn_pipes():
-	var spaceReducer: int = rng.randf_range(bottomPipeMinLimit, bottomPipeMaxLimit);
+	var spaceReducer: float = rng.randf_range(bottomPipeMinLimit, bottomPipeMaxLimit);
 	position.x = 1505.0
 	position.y = rng.randf_range(-360, -215)
 	
