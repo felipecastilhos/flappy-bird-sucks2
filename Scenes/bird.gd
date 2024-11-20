@@ -8,7 +8,7 @@ var is_alive: bool = true
 func _ready() -> void:
 	animatedSprite.play()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if is_alive:
 		if Input.is_action_pressed('Flap'):
 			linear_velocity = Vector2(0, -jumpForce)

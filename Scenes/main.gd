@@ -33,7 +33,6 @@ enum GAME_STATE { PLAYING, STOP }
 	
 func _process(delta: float):
 	scoreCountLabel.text = str(score)
-	var parallaxLayer1
 	if state == GAME_STATE.PLAYING: 
 		move_parallax_background(delta)
 
