@@ -1,4 +1,5 @@
 # flappy-bird-sucks2
+![Godot Engine](https://img.shields.io/badge/GODOT-%23121212.svg?style=for-the-badge&logo=godot-engine)
 
 Redoing my old bootleg project to study godot. This version of the game was made with Godot 4.3.
 
