@@ -39,14 +39,26 @@ script = ExtResource("1_0tuyr")
 position = Vector2(224, 309)
 lock_rotation = true
 
-[node name="GameBoundaries" type="StaticBody2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="UpperLimitsShape2D" type="CollisionShape2D" parent="GameBoundaries"]
+[node name="GameBoundaries" type="StaticBody2D" parent="Area2D"]
+
+[node name="UpperLimitsShape2D" type="CollisionShape2D" parent="Area2D/GameBoundaries"]
 position = Vector2(580, -7)
 shape = SubResource("RectangleShape2D_pjg4s")
 debug_color = Color(0.490196, 0.439216, 0.984314, 0.419608)
 
-[node name="BottomLimitsShape2D" type="CollisionShape2D" parent="GameBoundaries"]
+[node name="BottomLimitsShape2D" type="CollisionShape2D" parent="Area2D/GameBoundaries"]
+position = Vector2(575, 659)
+shape = SubResource("RectangleShape2D_pjg4s")
+debug_color = Color(0.490196, 0.439216, 0.984314, 0.419608)
+
+[node name="UpperLimitsShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(580, -7)
+shape = SubResource("RectangleShape2D_pjg4s")
+debug_color = Color(0.490196, 0.439216, 0.984314, 0.419608)
+
+[node name="BottomLimitsShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(575, 659)
 shape = SubResource("RectangleShape2D_pjg4s")
 debug_color = Color(0.490196, 0.439216, 0.984314, 0.419608)
